@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Hallo!!</h1>
+    <input id="input" type="text">
+    <button id="btn">Summit</button>
+    <h2 id="txt"></h2>
+</body>
+
+<script>
+    
+    let input = document.getElementById("input");
+    let btn   = document.getElementById("btn");
+    let txt   = document.getElementById("txt"); 
+    
+    btn.onclick = sendGreeting;
+    
+// sendGreeting -----------------------------------------------
+    function sendGreeting(){
+       
+        fetch(`/greet?name=${input.value}`).then(res =>{  // fetch sjekker om greet finnes på server. 
+            return res.text(); 
+        }).then(res => {
+            txt.innerHTML = res; 
+        })
+        
+    }
+    
+    
+</script>
+
+</html>
